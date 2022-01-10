@@ -1,0 +1,14 @@
+
+# Created by https://www.toptal.com/developers/gitignore/api/laravel
+# Edit at https://www.toptal.com/developers/gitignore?templates=laravel
+
+### Laravel ###
+/vendor/
+
+.env
+Homestead.yaml
+Homestead.json
+/.vagrant
+.phpunit.result.cache
+
+# End of https://www.toptal.com/developers/gitignore/api/laravel
