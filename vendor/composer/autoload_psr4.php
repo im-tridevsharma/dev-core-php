@@ -9,4 +9,5 @@ return array(
     'Src\\Models\\' => array($baseDir . '/src/Models'),
     'Src\\Controllers\\' => array($baseDir . '/src/Controllers'),
     'PHPMailer\\PHPMailer\\' => array($vendorDir . '/phpmailer/phpmailer/src'),
+    'Core\\Lib\\' => array($baseDir . '/core/lib'),
 );

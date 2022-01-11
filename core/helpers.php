@@ -48,7 +48,7 @@ if(!function_exists('view'))
             $env[$k] = $value;
         }
 
-        return $env[$key] ?? $default;
+        return isset($env[$key]) && !empty($env[$key]) ? $env[$key] : $default;
      }
  }
 
@@ -67,5 +67,45 @@ if(!function_exists('view'))
         ));
 
         return true;
+     }
+ }
+
+
+ if(!function_exists('asset'))
+ {
+     function asset($path = "")
+     {
+         if(!empty($path)){
+            $asset = env('ASSET_DIR', 'assets') . '/' . $path;
+            
+            return url($asset);
+         }else{
+             return '';
+         }
+     }
+ }
+
+ 
+ if(!function_exists('url'))
+ {
+     function url($string = "")
+     {
+        $connection = isset($_SERVER['HTTPS']) ? 'https://' : 'http://';
+        $app_url = $connection . $_SERVER['HTTP_HOST'] . '/' . basename(_BASE_DIR_);
+
+         if(!empty($string)){
+            $url =  env('APP_URL', $app_url) . '/' . $string;
+            return preg_replace('/([^:])(\/{2,})/', '$1/', $url);
+         }else{
+             return env('APP_URL', $app_url);
+         }
+     }
+ }
+
+ if(!function_exists('sanitize'))
+ {
+     function sanitize($string)
+     {
+         return htmlspecialchars(strip_tags($string));
      }
  }

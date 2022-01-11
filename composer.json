@@ -6,7 +6,8 @@
     "autoload": {
         "psr-4": {
             "Src\\Controllers\\": "src/Controllers/",
-            "Src\\Models\\": "src/Models/"
+            "Src\\Models\\": "src/Models/",
+            "Core\\Lib\\": "core/lib/"
         }
     }
 }

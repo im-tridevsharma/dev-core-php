@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title><?= $title ?? 'Core Dev PHP' ?></title>
-
+        <link href="<?= asset('/favicon.png') ?>" rel="icon" type="image/png"/>
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
@@ -19,9 +19,6 @@
             body {
                 font-family: 'Nunito', sans-serif;
             }
-            .brand{
-                color: dodgerblue;
-            }
             .tag{color: #fff;}
             .column{flex-direction: column;}
         </style>
@@ -31,8 +28,8 @@
             
             <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
                 <div class="flex justify-center items-center column pt-8 sm:justify-start sm:pt-0">
-                    <h1 class="brand">Core Dev PHP</h1>
-                    <p class="tag">A simple and easy core PHP :)</p>
+                    <img src="<?= asset('/logo.png') ?>" alt="dev-core-php"/>
+                    <p class="tag">Develop fast with full security.</p>
                 </div>
             </div>
         </div>

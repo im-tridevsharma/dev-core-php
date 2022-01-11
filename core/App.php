@@ -15,9 +15,10 @@ class App
     {
         $connection = isset($_SERVER['HTTPS']) ? 'https://' : 'http://';
         $app_url = $connection . $_SERVER['HTTP_HOST'] . '/' . basename(_BASE_DIR_);
-        edit_env('APP_URL', $app_url);
-        edit_env('DB_HOST', $_SERVER['HTTP_HOST']);
-        edit_env('DB_USERNAME', 'root');
+        !env('APP_URL') ? edit_env('APP_URL', $app_url) : '';
+        !env('DB_HOST') ? edit_env('DB_HOST', $_SERVER['HTTP_HOST']) : '';
+        !env('DB_USERNAME') ? edit_env('DB_USERNAME', 'root') : '';
+        !env('DB_NAME') ? edit_env('DB_NAME', 'dev_core_php') : '';
     }
 
     /**
@@ -27,6 +28,25 @@ class App
     {
         $this->setInitials();
         define('_VIEW_DIR_', _BASE_DIR_ . '/' . env('SOURCE_DIR', 'src') . '/' . env('VIEW_DIR', 'Views'));
+        
+        //check for debugging
+        $is_debug = env('APP_DEBUG');
+        if($is_debug) {
+            ini_set('error_reporting', E_ALL);
+            ini_set('display_errors', 'On');
+            ini_set('display_startup_errors', 'On');
+            ini_set('log_errors', 'On');
+        }
+
+        $env = env('APP_ENV');
+
+        if($env === 'production') {
+            ini_set('error_reporting', E_ALL);
+            ini_set('display_errors', 'Off');
+            ini_set('display_startup_errors', 'Off');
+            ini_set('log_errors', 'On');
+        }
+        
         //load config
         $config = require _BASE_DIR_ . '/config.php';
 

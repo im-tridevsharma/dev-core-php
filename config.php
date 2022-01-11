@@ -1,8 +1,8 @@
 <?php
 
-use Src\Controllers\WelcomeController;
+use Src\Controllers\Welcome;
 
 return array(
-    "default_controller"    => WelcomeController::class,
+    "default_controller"    => Welcome::class,
     "default_call"          => 'home'
 );
